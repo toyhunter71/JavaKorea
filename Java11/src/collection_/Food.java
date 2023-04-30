@@ -45,6 +45,7 @@ public class Food {
 				fl.deleteFoodList(str);
 			}else if(choice == 0) {
 				System.out.println("프로그램을 종료합니다!!!");
+				sc.close();
 				break;
 			}else {
 				System.out.println("==== 현재의 메뉴는 다음과 같습니다 ====");
@@ -64,7 +65,7 @@ class FoodList{
 	public FoodList() {
 		
 		String arr1[] = {"김밥","떡복기","순대"};
-		int arr2[] = {1000, 2000, 3000};
+//		int arr2[] = {1000, 2000, 3000};
 		
 		name.addAll(Arrays.asList(arr1));
 //		name.add("김밥");
