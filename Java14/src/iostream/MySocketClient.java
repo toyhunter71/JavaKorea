@@ -36,7 +36,8 @@ class MyClient extends Thread{
 		// port : 해당 프로그램의 포트
 		// IP : cmd -> ipconfig
 		try {
-			//192.168.3.101
+			// localhost : 자기자신의 컴퓨터 == "127.0.0.1"
+			//
 			socket = new Socket("127.0.0.1", 8089);			// 소켓을 생성(이제부터 통신 가능)
 			os = socket.getOutputStream();
 			is = socket.getInputStream();
@@ -58,11 +59,14 @@ class MyClient extends Thread{
 	// 서버로 메시지를 보내는 함수
 	public void sendMessage() {
 		System.out.println("보낼 메시지:");
-		String msg = sc.nextLine();
+		String msg = "";
 		try {
+			if(sc.hasNextLine()) {
+				msg = sc.nextLine();
+			}
 			oos.writeObject(msg);
 			oos.flush();		// 버그방지 (보내고나서 쓰레기값이 남아있을 수도 있기 때문에 비움)
-		} catch (IOException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
